@@ -21,9 +21,11 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 app_name = "apps"
 urlpatterns = [
     path("", views.HomeView.as_view(), name="index"),
     path("login/", include("login.urls")),
     path("admin/", admin.site.urls),
+    path("original/", include("original.urls"), name="original"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

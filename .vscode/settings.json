@@ -8,5 +8,6 @@
     ],
     "python.defaultInterpreterPath": "./venv/bin/python",
     "editor.defaultFormatter": "ms-python.black-formatter",
+    "html.autoClosingTags": true,
 
 }
