@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Original</title>
+    <title>Blog Posts</title>
 </head>
 <body>
-    <h1>Original Page</h1>
+    <h1>Blog Posts</h1>
+    <a href="{% url 'post_new' %}">New Post</a>
+    <ul>
+        {% for post in posts %}
+            <li>{{ post.title }} - {{ post.created_at }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

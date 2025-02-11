@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# .envファイルを読み込む
+load_dotenv()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -77,33 +80,13 @@ WSGI_APPLICATION = "apps.wsgi.app"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
-    # "default": {
-    #     "ENGINE": "django.db.backends.mysql",
-    #     "NAME": "events",
-    #     "USER": "root",
-    #     "PASSWORD": "",
-    #     "HOST": "localhost",
-    #     "PORT": "3306",
-    # }
-    # "default": {
-    #     "ENGINE": "django.db.backends.postgresql_psycopg2",
-    #     "NAME": "events",
-    #     "USER": "root",
-    #     "PASSWORD": "",
-    #     "HOST": "localhost",
-    #     "PORT": "3306",
-    # }
     "default": {
-        "ENGINE": os.environ.get("ENGINE"),
-        "NAME": os.environ.get("NAME"),
-        "USER": os.environ.get("USER"),
-        "PASSWORD": "rmyy0302",
-        "HOST": os.environ.get("HOST"),
-        "PORT": os.environ.get("PORT"),
+        "ENGINE": os.environ.get("ENGINE", "django.db.backends.mysql"),  # MySQLを使用
+        "NAME": os.environ.get("NAME", "boards"),  # データベース名
+        "USER": os.environ.get("USER", "yuto"),  # ユーザー名
+        "PASSWORD": os.environ.get("PASSWORD", "rmyy0302"),  # パスワード
+        "HOST": os.environ.get("HOST", "localhost"),  # ホスト
+        "PORT": os.environ.get("PORT", "3306"),  # ポート番号
     }
 }
 

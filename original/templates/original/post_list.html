@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ブログ一覧</title>
+    <title>Blog Posts</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .container { width: 80%; margin: 20px auto; }
@@ -12,14 +12,13 @@
 </head>
 <body>
     <div class="container">
-        <h1>ブログ一覧</h1>
-        {% for post in posts %}
-            <div class="post">
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.content }}</p>
-                <small>投稿日時: {{ post.created_at }}</small>
-            </div>
-        {% endfor %}
+        <h1>Blog Posts</h1>
+        <a href="{% url 'post_new' %}">New Post</a>
+        <ul>
+            {% for post in posts %}
+                <li>{{ post.title }} - {{ post.created_at }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
